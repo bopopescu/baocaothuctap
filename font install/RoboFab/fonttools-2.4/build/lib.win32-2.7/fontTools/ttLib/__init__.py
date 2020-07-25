@@ -587,12 +587,12 @@ class TTFont:
 		if tag in done:
 			return
 		tableClass = getTableClass(tag)
-		for masterTable in tableClass.dependencies:
-			if masterTable not in done:
-				if self.has_key(masterTable):
-					self._writeTable(masterTable, writer, done)
+		for mainTable in tableClass.dependencies:
+			if mainTable not in done:
+				if self.has_key(mainTable):
+					self._writeTable(mainTable, writer, done)
 				else:
-					done.append(masterTable)
+					done.append(mainTable)
 		tabledata = self.getTableData(tag)
 		if self.verbose:
 			debugmsg("writing '%s' table to disk" % tag)
